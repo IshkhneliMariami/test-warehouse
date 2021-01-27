@@ -35,5 +35,11 @@ public class StoreController {
         storeService.delete(id);
         return ResponseEntity.noContent().build();
     }
+    @PutMapping
+    public StoreItem updateStoreItem(@PathVariable long id,
+                                     @RequestBody StoreItem storeItem){
+        storeItem.setId(id);
+        return storeService.update(storeItem);
+    }
 
 }

@@ -9,11 +9,7 @@ Ext.define('MI.view.StoreGrid', {
         xclass: 'MI.view.MainViewModel'
     },
     bind: '{store}',
-    tbar: [{
-        text: 'დამატება',
-        handler: 'addItem',
-        scale: 'medium'
-    }, {
+    tbar: [ {
         xtype: 'textfield',
         labelAlign: 'right',
         name: 'name',

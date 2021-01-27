@@ -9,7 +9,7 @@ Ext.define('MI.view.AddItemWindow', {
         post: null
     },
     controller: {
-        xclass: 'MI.view.MainController'
+        xclass: 'MI.view.ItemController'
     },
     viewModel: {
         xclass: 'MI.view.MainViewModel'
@@ -26,50 +26,40 @@ Ext.define('MI.view.AddItemWindow', {
 
         items: [
 
-            {
-                xtype: 'textfield',
-                name: 'brand',
-                fieldLabel: 'ბრენდი'
-            },{
+           {
                 xtype: 'combo',
-                fieldLabel: 'საწყობი',
-                reference: 'store',
-                name: 'store',
-                emptyText: 'საწყობი',
+                fieldLabel: 'მძღოლი',
+                reference: 'driver',
+                name: 'driver',
+                emptyText: 'მძღოლი',
                 typeAhead: true,
                 queryMode: 'local',
                 forceSelection: true,
                 valueField: 'id',
                 displayField: 'name',
-            },{
-                xtype: 'combo',
-                fieldLabel: 'მომწოდებელი',
-                reference: 'supplier',
-                name: 'supplier',
-                emptyText: 'მომწოდებელი',
-                typeAhead: true,
-                queryMode: 'local',
-                forceSelection: true,
-                valueField: 'id',
-                displayField: 'name',
+                bind: {
+                    store: '{drivers}'
+                }
             }, {
-                xtype: 'textfield',
-                name: 'model',
-                fieldLabel: 'მოდელი'
-
+                xtype: 'combo',
+                fieldLabel: 'ტრანსპორტი',
+                reference: 'transport',
+                name: 'transport',
+                emptyText: 'ტრანსპორტი',
+                typeAhead: true,
+                queryMode: 'local',
+                forceSelection: true,
+                valueField: 'id',
+                displayField: 'name',
+                bind: {
+                    store: '{transports}'
+                }
             }, {
                 xtype: 'numberfield',
                 reference: 'quantity',
                 name: 'quantity',
                 allowBlank: false,
                 fieldLabel: 'რაოდენობა',
-
-            }, {
-                xtype: 'numberfield',
-                reference: 'price',
-                name: 'price',
-                allowBlank: false,
-                fieldLabel: 'ფასი',
 
             }],
         buttons: [{

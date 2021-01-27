@@ -1,26 +1,26 @@
 Ext.define('MI.view.MainController', {
     extend: 'Ext.app.ViewController',
-
-    addItem: function () {
-        Ext.create('MI.view.AddItemWindow', {
-            autoShow: true
-
-        })
-    },
-
-    saveItem: function () {
-        const me = this;
-        const form = me.lookup('form');
-        const values = form.getForm().getValues();
-        const store = me.getViewModel().getStore('store');
-        const item = Ext.create('MI.model.StoreModel', values);
-        values.price = Number(values.price) * Number(values.quantity);
-        console.log(values);
-        this.getViewModel().set('price', values.price);
-        store.add(item);
-        me.getView().close();
-
-    },
+    //
+    // addItem: function () {
+    //     Ext.create('MI.view.AddItemWindow', {
+    //         autoShow: true
+    //
+    //     })
+    // },
+    //
+    // saveItem: function () {
+    //     const me = this;
+    //     const form = me.lookup('form');
+    //     const values = form.getForm().getValues();
+    //     const store = me.getViewModel().getStore('store');
+    //     const item = Ext.create('MI.model.StoreModel', values);
+    //     values.price = Number(values.price) * Number(values.quantity);
+    //     console.log(values);
+    //     this.getViewModel().set('price', values.price);
+    //     store.add(item);
+    //     me.getView().close();
+    //
+    // },
 
     deleteItem: function (grid, rowIndex, colIndex) {
         const me = this;
@@ -55,17 +55,17 @@ Ext.define('MI.view.MainController', {
         form.getForm().reset();
     },
 
-    search:function (){
+    search: function () {
         const store = this.getViewModel().getStore('store');
         store.load({
             params: this.lookup('searchField').getValues(),
         })
     },
-    supplierNameRenderer: function(id) {
+    supplierNameRenderer: function (id) {
         const supplier = this.getViewModel().getStore('suppliers').getById(id);
         return supplier.get('name');
     },
-    warehouseNameRenderer: function(id) {
+    warehouseNameRenderer: function (id) {
         const warehouse = this.getViewModel().getStore('warehouses').getById(id);
         return warehouse.get('name');
     },
